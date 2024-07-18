@@ -1,0 +1,49 @@
+import java.util.*;
+
+class Node {
+    int val;
+    Node left;
+    Node right;
+
+    Node(int val) {
+        this.val = val;
+    }
+}
+
+public class NodeOfTree {
+    public static int product(Node root) {
+        if (root == null) {
+            return 1; // Return 1 because it's the multiplicative identity
+        }
+        return root.val * product(root.left) * product(root.right);
+    }
+
+    public static void display(Node root) {
+        if (root == null) return;
+        System.out.print(root.val + " ");
+        display(root.left);
+        display(root.right);
+    }
+
+    public static void main(String[] args) {
+        Node a = new Node(1);
+        Node b = new Node(4);
+        Node c = new Node(3);
+        Node d = new Node(2);
+        Node e = new Node(6);
+        Node f = new Node(7);
+        a.left = b;
+        a.right = c;
+        b.left = d;
+        b.right = e;
+        c.right = f;
+        Node g = new Node(10);
+        Node h = new Node(20);
+        c.left = g;
+        e.right = h;
+
+        display(a);
+        System.out.println();
+        System.out.println(product(a));
+    }
+}
